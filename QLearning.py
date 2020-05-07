@@ -1,17 +1,17 @@
-import sys 
+import sys
 import pygame
 import numpy.random as npr
-import math 
+import math
 import numpy as np
 
-from FBRedone import *
+from Flappy_Bird_game import *
 
 class Learner(object):
 
     def __init__(self):
         self.last_state = None
         self.last_action = None
-        self.last_reward = None 
+        self.last_reward = None
         self.previous_state = None
 
         self.alpha = 0.2
@@ -34,7 +34,7 @@ class Learner(object):
         self.last_reward = None
 
     def action_callback(self, state):
-        
+
         b_top = state["bird"]["top"]
         b_bot = state['bird']['bottom']
         b_mid = (b_top + b_bot) / 2
@@ -74,7 +74,7 @@ class Learner(object):
         return self.last_action
 
     def reward_callback(self, reward):
-        self.last_reward = reward 
+        self.last_reward = reward
 
 
 def run_games(learner, iters = 2, tick_speed= 480):
